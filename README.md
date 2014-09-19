@@ -4,9 +4,13 @@ Custom plugins for the Jekyll static site generator.
 
 handleize.rb is a liquid filter that forms a valid handle/slug from an input string. On <http://tomthorogood.co.uk/> it is used to create a class token: `<body class="{{ page.path | handleize }}">`.
 
+It has no dependencies.
+
 ## mathml.rb
 
 mathml.rb converts TeX into MathML. It provides a liquid tag `math` (and closing tag `endmath`), TeX within the tag will be converted into MathML.
+
+It depends on ritex: `gem install ritex`.
 
 The following TeX (a cubic function):
 ```
@@ -24,6 +28,8 @@ which renders as:
 ## urn.rb
 
 urn.rb adds Uniform Resource Names in the urn:uuid format to site, posts and pages. It creates a v5 UUID with `NameSpace_DNS` if it can recover a domain name from the base URL, falling back to a `NameSpace_URL` of the base URL if it cannot. Posts and pages have v5 UUIDs with `NameSpace_URL` created from their full URL. If it is present the base URL will be set to `url`, `uri` or `domain` from _config.yml prefixing with `http://` if no protocol is specified. Finally if none are present the base URL is set to `file://#{site.source}`.
+
+It depends on ruby-uuid.rb.
 
 ## ruby-uuid.rb
 
