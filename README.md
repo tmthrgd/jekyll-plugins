@@ -27,7 +27,7 @@ urn.rb adds Uniform Resource Names in the urn:uuid format to site, posts and pag
 
 ## ruby-uuid.rb
 
-ruby-uuid.rb is a uuid library and is solely a dependency of urn.rb. It is Copyright(c) 2005 URABE, Shyouhei.
+ruby-uuid.rb is a UUID library and is solely a dependency of urn.rb. It is Copyright(c) 2005 URABE, Shyouhei.
 
 *[UUID]: universally unique identifier
 *[UUIDs]: universally unique identifiers
