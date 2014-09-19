@@ -25,6 +25,12 @@ will produce the following MathML/HTML:
 which renders as:
 ![f(x)=ax3+bx2+cx+d](https://raw.githubusercontent.com/tmthrgd/jekyll-plugins/master/mathml.png)
 
+## needs_highlighter.rb
+
+needs_highlighter.rb returns a value indication whether any `code` tags with `class` attribute that contain `language-` exist in the input string.
+
+It depends upon nokogiri: `gem install nokogiri`.
+
 ## urn.rb
 
 urn.rb adds Uniform Resource Names in the urn:uuid format to site, posts and pages. It creates a v5 UUID with `NameSpace_DNS` if it can recover a domain name from the base URL, falling back to a `NameSpace_URL` of the base URL if it cannot. Posts and pages have v5 UUIDs with `NameSpace_URL` created from their full URL. If it is present the base URL will be set to `url`, `uri` or `domain` from _config.yml prefixing with `http://` if no protocol is specified. Finally if none are present the base URL is set to `file://#{site.source}`.
