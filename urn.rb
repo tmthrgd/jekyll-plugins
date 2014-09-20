@@ -13,6 +13,7 @@ module Jekyll
 			
 			uri = URI.parse base
 			base = "http://#{base}" if uri.scheme.nil?
+			uri = URI.parse base if uri.scheme.nil?
 			
 			unless site.config.has_key? "urn"
 				site.config["urn"] = UUID.create_v5(uri.host.downcase, UUID::NameSpace_DNS).to_uri if uri.host
