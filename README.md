@@ -6,6 +6,16 @@ handleize.rb is a liquid filter that forms a valid handle/slug from an input str
 
 It has no dependencies.
 
+## customkramdown.rb
+
+customkramdown.rb is a custom markdown process that inserts an empty `a` element as the first child of h[1..6] elements, with href pointing to the id of the h[1..6] element. It can be styled with the selector `h[1..6] > a:first-child:empty`.
+
+It depends on kramdown: `gem install kramdown`.
+
+Adding `markdown: CustomKramdownParser` to `_config.yml` will invoke customkramdown.rb instead of the default markdown parser.
+
+It will produce HTML markup such as the following: `<h4 id="social-media"><a href="#social-media"></a>Social Media</h4>`.
+
 ## mathml.rb
 
 mathml.rb converts TeX into MathML. It provides a liquid tag `math` (and closing tag `endmath`), TeX within the tag will be converted into MathML.
