@@ -37,7 +37,7 @@ which renders as:
 
 ## needs_highlighter.rb
 
-needs_highlighter.rb returns a value indication whether any `code` tags with `class` attribute that contain `language-` exist in the input string.
+needs_highlighter.rb returns a value indicating whether any `code` tags with `class` attribute that contain `language-` exist in the input string.
 
 It depends upon nokogiri: `gem install nokogiri`.
 
