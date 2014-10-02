@@ -1,7 +1,5 @@
 module Jekyll::HandleizeFilter
 	def handleize input
-		return if input.empty?
-		
 		handle = input.dup
 		
 		handle.downcase!
