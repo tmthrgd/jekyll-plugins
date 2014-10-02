@@ -1,9 +1,16 @@
-module Jekyll
-	module HandleizeFilter
-		def handleize input
-			input.downcase.gsub(/[^-_a-zA-Z0-9]/, '-').gsub(/-+/, '-').gsub(/^[-_]+|[-_]+$/, '') if input
-		end
+module Jekyll::HandleizeFilter
+	def handleize input
+		return if input.empty?
+		
+		handle = input.dup
+		
+		handle.downcase!
+		handle.gsub! /[^-_a-zA-Z0-9]/, "-"
+		handle.gsub! /-+/, "-"
+		handle.gsub! /^[-_]+|[-_]+$/, ""
+		
+		handle
 	end
 end
 
-Liquid::Template.register_filter(Jekyll::HandleizeFilter)
+Liquid::Template.register_filter Jekyll::HandleizeFilter
