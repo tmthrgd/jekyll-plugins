@@ -3,7 +3,7 @@ module MathML
 		require "itextomml"
 		
 		def self.parse tex, block
-			@parser = Itex2MML::Parser.new unless @parser
+			@parser ||= Itex2MML::Parser.new
 			block ? @parser.block_filter(tex) : @parser.inline_filter(tex)
 		end
 	rescue LoadError
@@ -18,7 +18,7 @@ module MathML
 		end
 		
 		def self.parse tex, block
-			@parser = Ritex::Parser.new unless @parser
+			@parser ||= Ritex::Parser.new
 			@parser.parse tex, { :display => block }
 		end
 	end
