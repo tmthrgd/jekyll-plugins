@@ -10,7 +10,7 @@ It will produce HTML markup such as the following: `<h4 id="social-media"><a hre
 
 ## handleize.rb
 
-handleize.rb is a liquid filter that forms a valid handle/slug from an input string. On <http://tomthorogood.co.uk/> it is used to create a class token: `<body class="{{ page.path | handleize }}">` -> `<body class="pages-home-md">`.
+handleize.rb is a liquid filter that forms a valid handle/slug from an input string. On <https://tomthorogood.co.uk/> it is used to create a class token: `<body class="{{ page.path | handleize }}">` -> `<body class="pages-home-md">`.
 
 It has no dependencies.
 
