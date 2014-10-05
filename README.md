@@ -1,5 +1,11 @@
 Custom plugins for the Jekyll static site generator.
 
+## filehash.rb
+
+filehash.rb generates a SHA1 hex digest for a given file.
+
+It has no dependencies.
+
 ## h1kramdown.rb
 
 h1kramdown.rb patches `Kramdown::Converter::Html.convert_header` so that it inserts an empty `a` element as the first child of h[1..6] elements, with href pointing to the id of the h[1..6] element. It can be styled with the selector `h[1..6] > a:first-child:empty`.
@@ -11,6 +17,21 @@ It will produce HTML markup such as the following: `<h4 id="social-media"><a hre
 ## handleize.rb
 
 handleize.rb is a liquid filter that forms a valid handle/slug from an input string. On <https://tomthorogood.co.uk/> it is used to create a class token: `<body class="{{ page.path | handleize }}">` -> `<body class="pages-home-md">`.
+
+It has no dependencies.
+
+## linguist.rb
+
+linguist.rb contains the tag `linguist_colors` that outputs css rules corresponding to languages that [linguist](https://github.com/github/linguist) (used by GitHub) detects.
+
+It depends on linguist: `$ [sudo] gem install github-linguist`.
+
+It accepts a property to assign the colour to and a css selector that replaces the `{language}` token with a slug derived from the language name.
+
+## math.rb
+
+math.rb provides liquid filters to access the following [`Math` module](http://www.ruby-doc.org/core-1.9.3/Math.html) methods: [acos](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-acos) [acosh](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-acosh) [asin](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-asin) [asinh](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-asinh) [atan](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-atan) [atan2](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-atan2) [atanh](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-atanh) [cbrt](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-cbrt) [cos](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-cos) [cosh](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-cosh) [erf](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-erf) [erfc](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-erfc) [exp](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-exp) [frexp](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-frexp) [gamma](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-gamma) [hypot](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-hypot) [ldexp](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-ldexp) [lgamma](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-lgamma) [log](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-log) [log10](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-log10) [log2](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-log2) [sin](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-sin) [sinh](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-sinh) [sqrt](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-sqrt) [tan](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-tan) [tanh](http://www.ruby-doc.org/core-1.9.3/Math.html#method-c-tanh).
+It also provides filters to access the following [`Numeric` module](http://ruby-doc.org/core-1.9.3/Numeric.html) methods: [abs](http://ruby-doc.org/core-1.9.3/Numeric.html#method-i-abs) [abs2](http://ruby-doc.org/core-1.9.3/Numeric.html#method-i-abs2) [divmod](http://ruby-doc.org/core-1.9.3/Numeric.html#method-i-divmod) [remainder](http://ruby-doc.org/core-1.9.3/Numeric.html#method-i-remainder).
 
 It has no dependencies.
 
