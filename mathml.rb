@@ -1,25 +1,33 @@
 module MathML
-	begin
-		require "itextomml"
-		
+	if system "which tex2mml >/dev/null 2>&1"
 		def self.parse tex, block
-			@parser ||= Itex2MML::Parser.new
-			block ? @parser.block_filter(tex) : @parser.inline_filter(tex)
+			IO.popen(["tex2mml", *(block ? [] : ["--inline"]), "--semantics", tex]).read.strip
 		end
-	rescue LoadError
+	else
 		begin
-			require "ritex"
+			require "itextomml"
+			
+			def self.parse tex, block
+				@parser ||= Itex2MML::Parser.new
+				block ? @parser.block_filter(tex) : @parser.inline_filter(tex)
+			end
 		rescue LoadError
-			STDERR.puts "You are missing a library required for mathml. Please run either:"
-			STDERR.puts " $ [sudo] gem install itextomml"
-			STDERR.puts "or:"
-			STDERR.puts " $ [sudo] gem install ritex"
-			raise Errors::FatalException.new "Missing dependency: itextomml or ritex"
-		end
-		
-		def self.parse tex, block
-			@parser ||= Ritex::Parser.new
-			@parser.parse tex, { :display => block }
+			begin
+				require "ritex"
+			rescue LoadError
+				STDERR.puts "You are missing a library required for mathml. Please run either:"
+				STDERR.puts " $ [sudo] npm install [-g] https://github.com/mathjax/MathJax-node/tarball/master"
+				STDERR.puts "or:"
+				STDERR.puts " $ [sudo] gem install itextomml"
+				STDERR.puts "or:"
+				STDERR.puts " $ [sudo] gem install ritex"
+				raise Errors::FatalException.new "Missing dependency: MathJax-node, itextomml or ritex"
+			end
+			
+			def self.parse tex, block
+				@parser ||= Ritex::Parser.new
+				@parser.parse tex, { :display => block }
+			end
 		end
 	end
 end
