@@ -4,15 +4,9 @@ module Jekyll::CSSMatchesFilter
 	def css_matches input, selector
 		return false unless input && selector
 		
-		doc = Nokogiri::HTML input
+		doc = Nokogiri::HTML input { |config| config.nonet }
 		
-		return false unless doc
-		
-		!doc.css(selector).empty?
-	rescue Exception => e
-		Jekyll.logger.warn "Error: #{e.message}"
-		
-		false
+		doc ? !doc.css(selector).empty?: false
 	end
 end
 

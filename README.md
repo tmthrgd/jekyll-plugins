@@ -6,7 +6,15 @@ css_mathches.rb returns a value indicating whether the css selector matches any 
 
 It depends upon nokogiri: `$ [sudo] gem install nokogiri`.
 
-For example with `{% assign x = content | css_matches: "li:not(:empty)" %}`, `x` will be true if `content` containst a non-empty `<li>` tag.
+For example with `{% assign x = content | css_matches: "li:not(:empty)" %}`, `x` will be true if `content` contains a non-empty `<li>` tag.
+
+## xpath_mathches.rb
+
+xpath_mathches.rb is a counterpart to css_mathches.rb returns a value indicating whether the xpath selector matches any elements.
+
+It depends upon nokogiri: `$ [sudo] gem install nokogiri`.
+
+For example with `{% assign x = content | xpath_matches: "a[@href='help.php']" %}`, `x` will be true if `content` contains an anchor tag, `<a>`, with a href attribute of value help.php.
 
 ## filehash.rb
 
@@ -109,6 +117,14 @@ The same TeX will produce the following MathML/HTML using ritex:
 ```
 
 **Note**: while `ab^2` is valid TeX only MathJax-node is capable of parsing it. Both itextomml and ritex require it to instead be written as `a{b^2}`.
+
+## ~~needs_highlighter.rb~~
+
+~~needs_highlighter.rb returns a value indicating whether any `code` tags with `class` attribute that contain `language-` exist in the input string.~~
+
+~~It depends upon nokogiri: `$ [sudo] gem install nokogiri`.~~
+
+needs_highlighter.rb has been removed in favour of css_mathches.rb. It can be replicated with: `css_matches: "code[class*=language-]:not(.nohighlight)"`. 
 
 ## urn.rb
 
