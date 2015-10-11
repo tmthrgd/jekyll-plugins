@@ -54,19 +54,23 @@ Liquid::Template.register_tag "math", Jekyll::MathML
 begin
 	require "kramdown"
 	
-	class Kramdown::Converter::Html
-		def convert_math el, indent
-			block = el.options[:category].eql? :block
-			
-			attr = el.attr.dup
-			attr.delete "display"
-			attr.delete "xmlns"
-			
-			mathml = MathML.parse el.value, block
-			mathml.insert "<math".length, html_attributes(attr)
-			
-			block ? "#{" " * indent}#{mathml}\n" : mathml
+	if Kramdown::VERSION < '1.7.0'
+		class Kramdown::Converter::Html
+			def convert_math el, indent
+				block = el.options[:category].eql? :block
+				
+				attr = el.attr.dup
+				attr.delete "display"
+				attr.delete "xmlns"
+				
+				mathml = MathML.parse el.value, block
+				mathml.insert "<math".length, html_attributes(attr)
+				
+				block ? "#{" " * indent}#{mathml}\n" : mathml
+			end
 		end
+	else
+		# Use `math_engine: mathjaxnode` for 1.7+
 	end
 rescue LoadError
 end
