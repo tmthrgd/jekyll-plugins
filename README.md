@@ -53,72 +53,13 @@ It also provides filters to access the following [`Numeric` module](http://ruby-
 
 It has no dependencies.
 
-## mathml.rb
+## ~~mathml.rb~~
 
-mathml.rb converts TeX into MathML. It provides a liquid tag `math` (and closing tag `endmath`), TeX within the tag will be converted into MathML. If kramdown is installed it will also replace `Kramdown::Converter::Html.convert_math` so that MathML can be generated using kramdown builtins. To clarify you can always use `{% math %}...{% endmath %}` but when using the kramdown parser you can also use `$$...$$`.
+~~mathml.rb converts TeX into MathML. It provides a liquid tag `math` (and closing tag `endmath`), TeX within the tag will be converted into MathML. If kramdown is installed it will also replace `Kramdown::Converter::Html.convert_math` so that MathML can be generated using kramdown builtins. To clarify you can always use `{% math %}...{% endmath %}` but when using the kramdown parser you can also use `$$...$$`.~~
 
-It depends on either MathJax-node, itextomml or ritex.
+~~It depends on either MathJax-node, itextomml or ritex.~~
 
-To install MathJax-node: `$ [sudo] npm install [-g] https://github.com/mathjax/MathJax-node/tarball/master` then you should add `node_modules/MathJax-node/bin` to your `PATH` environment variable. 
-
-To install itextomml: `$ [sudo] gem install itextomml`
-
-To install ritex: `$ [sudo] gem install ritex`.
-
-The following TeX (a cubic function):
-```
-{% math %}
-f(x) = a{x^3} + b{x^2} + cx + d
-{% endmath %}
-```
-will produce the following MathML/HTML using MathJax-node:
-```html
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-  <semantics>
-    <mrow>
-      <mi>f</mi>
-      <mo stretchy="false">(</mo>
-      <mi>x</mi>
-      <mo stretchy="false">)</mo>
-      <mo>=</mo>
-      <mi>a</mi>
-      <mrow class="MJX-TeXAtom-ORD">
-        <msup>
-          <mi>x</mi>
-          <mn>3</mn>
-        </msup>
-      </mrow>
-      <mo>+</mo>
-      <mi>b</mi>
-      <mrow class="MJX-TeXAtom-ORD">
-        <msup>
-          <mi>x</mi>
-          <mn>2</mn>
-        </msup>
-      </mrow>
-      <mo>+</mo>
-      <mi>c</mi>
-      <mi>x</mi>
-      <mo>+</mo>
-      <mi>d</mi>
-    </mrow>
-    <annotation encoding="application/x-tex">f(x) = a{x^3} + b{x^2} + cx + d</annotation>
-  </semantics>
-</math>
-```
-
-The same TeX will produce the following MathML/HTML using itextomml:
-```html
-<math xmlns='http://www.w3.org/1998/Math/MathML' display='block'><semantics><mrow><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><msup><mi>ax</mi> <mn>3</mn></msup><mo>+</mo><msup><mi>bx</mi> <mn>2</mn></msup><mo>+</mo><mi>cx</mi><mo>+</mo><mi>d</mi></mrow><annotation encoding='application/x-tex'>f(x) = ax^3 + bx^2 + cx + d</annotation></semantics></math>
-```
-which renders as: ![f(x)=ax3+bx2+cx+d](https://raw.githubusercontent.com/tmthrgd/jekyll-plugins/master/mathml.png)
-
-The same TeX will produce the following MathML/HTML using ritex:
-```html
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mi>f</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mi>a</mi><mrow><msup><mi>x</mi><mn>3</mn></msup></mrow><mo>+</mo><mi>b</mi><mrow><msup><mi>x</mi><mn>2</mn></msup></mrow><mo>+</mo><mi>c</mi><mi>x</mi><mo>+</mo><mi>d</mi></math>
-```
-
-**Note**: while `ab^2` is valid TeX only MathJax-node is capable of parsing it. Both itextomml and ritex require it to instead be written as `a{b^2}`.
+mathml.rb has been removed in favor of kramdown's [Ritex support](http://kramdown.gettalong.org/math_engine/ritex.html), [itex2MML support](http://kramdown.gettalong.org/math_engine/itex2mml.html) and [Mathjax-Node support](http://kramdown.gettalong.org/math_engine/mathjaxnode.html).
 
 ## ~~needs_highlighter.rb~~
 
