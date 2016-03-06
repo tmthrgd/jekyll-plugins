@@ -24,7 +24,7 @@ class Jekyll::UUIDGenerator < Jekyll::Generator
 				UUID.create_v5 base, UUID::NameSpace_URL
 			end.to_uri unless site.config.has_key? "urn"
 		
-		(site.posts + site.pages).each do |page|
+		(site.posts.docs + site.pages).each do |page|
 			next if page.data.has_key? "urn"
 			
 			page.data["urn"] = UUID.create_v5(URI.join(base, page.url).to_s, UUID::NameSpace_URL).to_uri
